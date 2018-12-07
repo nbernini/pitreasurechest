@@ -8,10 +8,10 @@ import select
 
 import cv2
 
-import hardware
+#import hardware
 import config
 import face
-
+from picam import camera
 
 # Prefix for positive training image filenames.
 POSITIVE_FILE_PREFIX = 'positive_'
@@ -27,19 +27,25 @@ def is_letter_input(letter):
 
 
 if __name__ == '__main__':
-	camera = config.get_camera()
+
+	# Load Camera
+        cam = camera(rotation=0)
+
+        # Create the directory for positive training images if it doesn't exist.
+        if not os.path.exists(config.POSITIVE_DIR):
+                os.makedirs(config.POSITIVE_DIR)
+
+        # Find the largest ID of existing positive images.
+        # Start new images after this ID value.
+        files = sorted(glob.glob(os.path.join(config.POSITIVE_DIR, 
+        POSITIVE_FILE_PREFIX + '[0-9][0-9][0-9].pgm')))
+        count = 0
+        if len(files) > 0:
+                # Grab the count from the last filename.
+                count = int(files[-1][-7:-4])+1
+
+        """
 	box = hardware.Box()
-	# Create the directory for positive training images if it doesn't exist.
-	if not os.path.exists(config.POSITIVE_DIR):
-		os.makedirs(config.POSITIVE_DIR)
-	# Find the largest ID of existing positive images.
-	# Start new images after this ID value.
-	files = sorted(glob.glob(os.path.join(config.POSITIVE_DIR, 
-		POSITIVE_FILE_PREFIX + '[0-9][0-9][0-9].pgm')))
-	count = 0
-	if len(files) > 0:
-		# Grab the count from the last filename.
-		count = int(files[-1][-7:-4])+1
 	print 'Capturing positive training images.'
 	print 'Press button or type c (and press enter) to capture an image.'
 	print 'Press Ctrl-C to quit.'
@@ -65,3 +71,5 @@ if __name__ == '__main__':
 			cv2.imwrite(filename, crop)
 			print 'Found face and wrote training image', filename
 			count += 1
+
+        """

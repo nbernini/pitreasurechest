@@ -32,7 +32,7 @@ POSITIVE_DIR = './training/positive'
 NEGATIVE_DIR = './training/negative'
 
 # Filename to use when saving the most recently captured image for debugging.
-DEBUG_IMAGE = 'capture.pgm'
+DEBUG_IMAGE = 'capture.jpg'
 
 
 
