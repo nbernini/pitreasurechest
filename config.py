@@ -18,7 +18,7 @@ LOCK_SERVO_LOCKED   = 1100
 
 ''' Button '''
 # Pi GPIO port which is connected to the button.
-BUTTON_PIN = 25
+BUTTON_PIN = 22
 # Down and up values for the button.  The code expects to detect a down to up
 # transition as an activation of the button.  Therefore a normally open button
 # should be False (low) when down and True (high) when up.
