@@ -8,12 +8,17 @@
 
 ''' Servo ''' 
 # Pi GPIO port which is connected to the lock servo signal line.
-LOCK_SERVO_PIN = 18
+LOCK_SERVO_PIN = 12
+LOCK_FREQ = 50
+LOCK_0 = 2.5
+LOCK_90 = 7.5
+LOCK_180 = 12.0
+
 # Pulse width value (in microseconds) for the servo at the unlocked and locked
 # position.  Center should be a value of 1500, max left a value of 1000, and 
 # max right a value of 2000.
-LOCK_SERVO_UNLOCKED = 2000
-LOCK_SERVO_LOCKED   = 1100
+#LOCK_SERVO_UNLOCKED = 2000
+#LOCK_SERVO_LOCKED   = 1100
 
 
 ''' Button '''
